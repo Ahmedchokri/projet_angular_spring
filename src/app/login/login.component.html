@@ -1,0 +1,32 @@
+<div class="col-md-6  offset-md-3">
+<div class="card">
+  <div class="card-header card-header-danger" style="display:flex">
+    <h4 class="card-title">Authentification</h4>
+    <img src="./assets/img/faces/store.jpg" style="height: 100px ;width: 100px;margin-left: 350px;">
+  </div>
+  <div class="card-body">
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <div class="container text-center">
+            </div>
+    
+            <form class="form-group">
+              <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+              <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>
+              <mat-form-field class="full-width">
+                <mat-label>Username</mat-label><input [(ngModel)]="username" name="username" required type="text"
+                  matInput />
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <mat-label>Password</mat-label><input [(ngModel)]="password" required name="password" type="password"
+                  matInput />
+              </mat-form-field>
+              <div class="container text-center">
+                <button type="submit" (click)=handleLogin() mat-raised-button style="background-color:#f44336; color: blanchedalmond;">Login</button>
+              </div>
+            </form>
+          </div>
+        </div>
+  </div>
+</div>
+</div>

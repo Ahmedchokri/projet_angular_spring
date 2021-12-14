@@ -1,0 +1,107 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Facture</h4>
+                        <p class="card-category">liste des factures</p>
+                    </div>
+                    <div>
+                        <br>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" class="form-control" style="width: 50px!important;" placeholder="    Rechercher..." name="montantfacture" [(ngModel)] = "datefacture" (ngModelChange)="Search()" >
+                        <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
+                            <i class="material-icons">search</i>
+                            <div class="ripple-container"></div>
+
+                          
+
+                        </button>
+                        <button type="button" class=" btn  btn-sm btn-success"  [routerLink]="['/facture/addfacture']"> <i class="fa fa-plus"></i>  Ajouter</button> <br>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped" id="table">
+                                <thead class=" text-primary">
+                                  
+                                     <th>
+                                        Date Facture 
+                                     </th> 
+                                    <th>
+                                        Montant Facture
+                                    </th>
+                                    <th (click)="sort('remise')">
+                                        Montant Remise&nbsp;<i class="fa fa-sort"></i>
+                                    </th>
+                                    <th>
+                                        Active 
+                                     </th> 
+                                    <th>
+                                        Action
+                                    </th>
+                                </thead>
+                                <tbody> 
+                                   
+                                     <tr *ngFor="let u of list | 
+                                     paginate: { 
+                                         itemsPerPage: 2,
+                                          currentPage: page,
+                                           totalItems : totalLength 
+                                        } | orderBy: key:reverse "> 
+                                        
+
+                                        
+                                       
+                                        <td>{{ u.datefacture | date:'dd/MM/yyyy'}}</td> 
+                                        <td>{{u.montantfacture}}</td>
+                                        <td>{{u.montantremise}}</td>
+                                        <td>{{u.active}}</td>  
+                                      
+                                       <td>
+                                           
+                                        <button type="button" class="btn btn-sm btn-danger" (click)="openSweetalert(u.idfacture)">
+                                            <i class="fa fa-ban fa-fw"></i> 
+                                        </button>
+                                       
+                                         <button (click)="triggerModal1(detail,u.idfacture)" class="btn btn-sm btn-info"  >
+                                            <i class="fa fa-search"></i> Details
+                                        </button> 
+                                        </td> 
+                                      
+                                    </tr>
+                                 
+                                </tbody>
+                            </table>
+                            <button class="btn btn-sm " type="button" (click)="download()" >
+                <span  class="material-icons"> picture_as_pdf </span>
+                </button>
+                    <button class="btn btn-sm " type="button" [routerLink]="['fullcalendar']">
+                        <mat-icon>today</mat-icon>
+                    </button>
+                        </div>
+                    </div>
+                </div>
+               <pagination-controls class="text-center my-pagination"  (pageChange)=" page = $event"></pagination-controls>  
+                
+   
+                
+ </div>
+ <router-outlet></router-outlet>
+ <ng-template #detail let-modal>
+    <div class="modal-header">
+      <h1 class="modal-title" id="modal-basic-title">Les details du facture</h1>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body" size=400 style="display: flex; justify-content: center;">
+      
+        <app-listdetailfacture [listdetailsfacture]="list2"></app-listdetailfacture>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">fermer</button>
+    </div>
+  </ng-template>

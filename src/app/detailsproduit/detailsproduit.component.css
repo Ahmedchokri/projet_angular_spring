@@ -1,0 +1,20 @@
+.titre{
+    font-size: inherit;
+    font-weight: 250; 
+    line-height: 1;
+    
+    letter-spacing: normal;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -50px;
+    margin-left: -15px;
+    padding: 12px 12px 12px;
+}
+::ng-deep .main-panel .main-content {
+    margin-top: 0px!important;
+    margin-bottom: 0px!important;
+    padding: 0px 0px !important;
+    min-height: calc(100vh - 123px);
+}

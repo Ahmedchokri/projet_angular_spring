@@ -1,0 +1,52 @@
+<div class="col-md-8">
+    <div class="card">
+        <div class="card-header card-header-danger">
+            <h4 class="card-title">Modifier les details du Produit</h4>
+            <p class="card-category">Saisir votre nouveau produit</p>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="myForm">
+                <div class="row">
+                    <div class="col-md-4">
+                      <mat-form-field class="example-full-width">
+                        <input formControlName="iddetailproduit" matInput placeholder="iddetailproduit" type="number"
+                          [(ngModel)]="request.iddetailproduit">
+          
+                      </mat-form-field>
+                    </div>
+          
+                  </div>
+                <mat-form-field>
+                    <input matInput formControlName="date_creation" [matDatepicker]="picker"  placeholder="Choose a date">
+                    <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <input matInput formControlName="date_dermodification" [matDatepicker]="picker2"  placeholder="Choose a date">
+                    <mat-datepicker-toggle matSuffix [for]="picker2" ></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                  </mat-form-field>
+                <div class="row">
+                    <div class="col-md-7">
+                        <p class="titre">Les categories du produit</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <mat-form-field appearance="fill">
+                            <mat-label>{{detailsproduct.categorieproduit}}</mat-label>
+                            <mat-select formControlName="categorieproduit" >
+                                <mat-option value="Electromenager" >  Electromenager  </mat-option>
+                                <mat-option value="Alimentaire" >  Alimentaire  </mat-option>
+                                <mat-option value="Quincaillerie" >  Quincaillerie  </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="save()">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+

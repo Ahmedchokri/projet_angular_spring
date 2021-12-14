@@ -1,0 +1,156 @@
+<mat-stepper orientation="vertical">
+  <mat-step>
+    <ng-template matStepLabel class="x">Ajouter un produit</ng-template>
+    <ng-template matStepContent>
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Ajouter Produit</h4>
+            <p class="card-category">saisir votre nouveau produit</p>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="addform">
+              <div class="row">
+                <div class="col-md-5">
+                  <mat-form-field class="example-full-width">
+                    <input formControlName="codeproduit" matInput placeholder="Code_Produit" type="text"
+                      [(ngModel)]="product.codeproduit">
+                    <mat-error *ngIf="addform.get('codeproduit').invalid && addform.get('codeproduit').touched">
+                      <span *ngIf="addform.get('codeproduit').errors.required">This field is required</span>
+                      <span *ngIf="addform.get('codeproduit').errors.min">This field is max 5</span>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="col-md-5">
+                  <mat-form-field class="example-full-width">
+                    <input formControlName="libelleproduit" matInput placeholder="Libelle" type="text"
+                      [(ngModel)]="product.libelleproduit">
+                  </mat-form-field>
+                  <mat-error *ngIf="addform.get('libelleproduit').invalid && addform.get('libelleproduit').touched">
+                    <span *ngIf="addform.get('libelleproduit').errors.required">This field is required</span>
+                    <span *ngIf="addform.get('libelleproduit').errors.minlength">This field is max 5</span>
+                  </mat-error>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-5">
+                  <mat-form-field class="example-full-width">
+                    <input formControlName="prixunitaire" matInput placeholder="Prix_unitaire" type="number"
+                      [(ngModel)]="product.prixunitaire">
+                  </mat-form-field>
+                  <mat-error *ngIf="addform.get('prixunitaire').invalid && addform.get('prixunitaire').touched">
+                    <span *ngIf="addform.get('prixunitaire').errors.required">This field is required</span>
+                    <span *ngIf="addform.get('prixunitaire').errors.min">This field is max 5</span>
+                  </mat-error>
+                </div>
+              </div>
+              <div class="mb-3">
+                <div style="margin-top: 5px;">
+      
+      
+      
+                  <div style="display:flex">
+                    <label for="file-upload" class="custom-file-upload x">
+      
+                      Upload Image
+                      <span class="material-icons" style=" margin-left:5px; size:50px">cloud_upload</span>
+                    </label>
+                  </div>
+                  <input (change)="onImageChange($event)" required formControlName="image" id="file-upload" type="file" />
+                  <div class="col-md-4">
+                    <mat-error *ngIf="addform.get('image').invalid && addform.get('image').touched ">
+                      <span *ngIf="addform.get('image').errors.required">Image is not insered</span>
+                    </mat-error>
+                  </div>
+      
+      
+                </div>
+              </div>
+              <div class="preview" *ngIf="imgFile">
+                <img [src]="imgFile" id="imgFile"
+                  style="width:250px; height:250px ;margin-top : 5px;border-radius: 3px ; border-style: groove;;border-radius: 3px; ">
+              </div>
+            </form> 
+            <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="save()">Save</button>
+          </div>
+        </div>
+      </div>
+      <button mat-button matStepperNext mat-raised-button class="b" >Next</button>
+    </ng-template>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>details du produit</ng-template>
+    <ng-template matStepContent>
+      <app-detailsproduit (request5)="save1($event)"></app-detailsproduit>
+      <button mat-button matStepperPrevious mat-raised-button class="b">Back</button>
+      <button mat-button matStepperNext mat-raised-button class="b">Next</button>
+    </ng-template>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Stock</ng-template>
+    <div class="card">
+
+<div class="row">
+      <form [formGroup]="stockform">
+
+     <div class="col-md-7 v">
+          <mat-form-field appearance="fill">
+              <mat-label>Electromenager</mat-label>
+              <mat-select formControlName="stock" required>
+                  <mat-option *ngFor="let i of stock " [value]="i.idstock">
+                      {{i.libellestock}}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+      </div>
+   
+      </form>
+      <div  class="c">
+        <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="save2()">save</button>
+      </div>
+      
+   
+  </div>
+
+    </div>
+    
+  <button mat-button matStepperPrevious mat-raised-button class="b">Back</button>
+  <button mat-button matStepperNext mat-raised-button class="b">Next</button>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Rayon</ng-template>
+    <div class="card">
+    <div class="row">
+      <form [formGroup]="rayonform">
+
+      <div class="col-md-7 v">
+          <mat-form-field appearance="fill">
+              <mat-label>Rayon</mat-label>
+              <mat-select formControlName="rayon" required>
+                  <mat-option *ngFor="let i of rayon " [value]="i.idrayon">
+                      {{i.libelle}}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+          
+      </div>
+
+      </form>
+      <div class="c">
+        <button mat-raised-button type="submit" class="btn btn-danger pull-right " (click)="save3()">save</button>
+      </div>
+       
+    
+  </div>
+  </div>
+    <button mat-button matStepperPrevious mat-raised-button class="b">Back</button>
+    <diV style="display:flex; padding:5px;">
+  <button mat-raised-button type="submit" class="btn btn-danger" style="margin-left: 200px;"(click)="enregistrer()">Enregistrer</button>
+  <h4 style="color:red;margin-left: 20px;"> {{message}}</h4>
+    </diV>
+   
+  </mat-step>
+</mat-stepper>

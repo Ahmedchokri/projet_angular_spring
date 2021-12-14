@@ -1,0 +1,98 @@
+
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">Facture</h4>
+            <p class="card-category">Ajouter une facture</p>
+          </div>
+          <div class="container" style="margin-top:20px">
+            <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-md-5">
+                <label for="name">Nom du lient</label>
+                
+                  <mat-form-field appearance="fill">
+                    <mat-select formControlName="client">
+                      <mat-option *ngFor="let client of clients" [value]="client.idclient"> {{client.nom}} </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+               
+             </div>
+             </div>
+             <div class="row">
+              <div class="col-md-5">
+                <label for="name">Date Facture</label>
+                <input type="date" id="name" name="name" formControlName="dateFacture" class="form-control">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-5">
+                <label for="name">Montant remise</label>
+                <input type="number" id="name" name="name" formControlName="Montant_remise" disabled
+                  class="form-control">
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5">
+                <label for="name">Montant Facture</label>
+                <input type="number" id="name" name="name" formControlName="Montant_Facture" disabled
+                  class="form-control">
+           </div>
+           </div>
+           <div class="row" style="margin-top:20px">
+            <label for="name" style="font-weight: bold!important;"> Ajouter un ou des produits </label>
+              <table class="table table-bordered" formArrayName="Products">
+              
+                <tr *ngFor="let product of Products().controls; let i=index" [formGroupName]="i">
+                  <td>
+                    <label for="name"> Produit </label>
+                    <mat-form-field appearance="fill">
+                      <mat-select formControlName="produit">
+                        <mat-option *ngFor="let prod of produits" [value]="prod.idproduit"
+                          (click)="change(prod.prixunitaire,i,product)"> {{prod.libelleproduit}} </mat-option>
+
+                      </mat-select>
+                    </mat-form-field>
+                  </td>
+                  <td>
+                    <label for="name">   Quantité </label>
+                    <input type="number" formControlName="qty" class="form-control" (click)="change1(i,product)">
+                  </td>
+                  <td>
+                    <label for="name">   Pourcentage Remise  </label>
+                    <input type="number" formControlName="pourcentage_remise" (click)="change2(i,product)"
+                      class="form-control">
+                  </td>
+                  <td>
+                    <label for="name"> Montant Remise </label>
+                    <input type="number" formControlName="Montant_remise" class="form-control" disabled>
+                  </td>
+
+                  <td>
+                    <label for="name"> Prix total </label> 
+                    <input type="number" formControlName="price" class="form-control" disabled>
+                  </td>
+                  <td> 
+                    <button type="button" class="btn btn-sm btn-danger" (click)="removeQuantity(i)">
+                      <i class="fa fa-trash"></i> 
+                  </button>
+                 
+                   <button (click)="addProduct()" class="btn btn-sm btn-info"  >
+                      <i class="fa fa-plus"></i> 
+                  </button> 
+                  </td>
+                </tr>
+              </table>
+             </div>
+              <button type="submit" class="btn btn-success">Ajouter</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

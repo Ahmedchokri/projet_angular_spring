@@ -1,0 +1,11 @@
+.btn.btn-sm.btn-info{
+color: beige!important;
+}
+.btn.btn-sm.btn-danger{
+color: white !important;
+}
+th{
+  color :black;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size:xx-small;
+}

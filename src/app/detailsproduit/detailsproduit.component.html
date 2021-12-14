@@ -1,0 +1,54 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Les details du produits</h4>
+                        <p class="card-category">Ajouter les details du produit</p>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="myForm">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <mat-form-field>
+                                        <input required formControlName="date_creation" matInput [matDatepicker]="picker" placeholder="Choose a date">
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <mat-form-field>
+                                        <input required formControlName="date_dermodification" matInput [matDatepicker]="picker2" placeholder="Choose a date">
+                                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker2></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <p class="titre">Les categories du produit</p>                 
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Electromenager</mat-label>
+                                        <mat-select required formControlName="categorieproduit" required>
+                                            <mat-option *ngFor="let i of categorie" [value]="i.viewValue">
+                                                {{i.viewValue}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </form>
+                        <button mat-raised-button type="submit" class="btn btn-danger pull-right " (click)="save()">save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

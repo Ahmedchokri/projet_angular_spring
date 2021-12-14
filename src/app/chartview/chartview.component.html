@@ -1,0 +1,25 @@
+
+<div class="card" style="display: block; ">
+    <div class="col-md-8" style="display: block;">
+    <mat-form-field class="example-full-width">
+      <input [(ngModel)]="search" matInput placeholder="Entrer le libellet du stock" type="text" (input)="search1()">
+    </mat-form-field>
+</div>
+  
+    <div style="height: 300px;width: 300px;" >
+
+        <canvas mdbChart
+     
+        [chartType]="chartType"
+        [datasets]="chartDatasets"
+        [labels]="chartLabels"
+        [colors]="chartColors"
+        [options]="chartOptions"
+        [legend]="true"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)">
+    </canvas>
+
+    </div>
+      <p> le nombre des produits par categorie pour un tel stock</p>
+  </div>

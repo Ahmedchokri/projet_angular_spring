@@ -1,0 +1,36 @@
+
+<div class="content" style="margin-top:100px">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Detail Facture</h4>
+                        <p class="card-category"> Voila la liste des details du facture</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+            <tr>
+              <th scope="col" hidden>id</th>
+              <th scope="col">Montant Remise</th>
+              <th scope="col">Pourcentage remise</th>
+              <th scope="col" >Prix total</th>
+              <th scope="col" >Quantite </th>
+              <th scope="col">Produit</th>
+            </tr>
+          </thead>
+          <tbody >
+              <tr *ngFor ="let c of listdetailsfacture " >
+                <td >{{c.montantremise}}</td>
+                <td >{{c.pourcentageremise}}</td>
+                <td >{{c.prixtotal}}</td>
+                  <td >{{c.quantite}}</td>
+                  <td >{{c.produit['libelleproduit']}}</td>
+              </tr>
+  
+          </tbody>    
+          </table>
+          </div>
+          

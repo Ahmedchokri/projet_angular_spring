@@ -1,0 +1,97 @@
+.mat-raised-button.btn:not([class*=mat-elevation-z]).btn-danger, .btn.btn-danger {
+    color: #fff;
+    background-color: #f44336;
+    margin-top: 20px;
+    border-color: #f44336;
+    box-shadow: 0 2px 2px 0 rgb(244 67 54 / 14%), 0 3px 1px -2px rgb(244 67 54 / 20%), 0 1px 5px 0 rgb(244 67 54 / 12%);
+    text-transform:none;
+}
+table {
+    width: 100%;
+  }
+  .margin-position{
+      margin-top:140px;
+  }
+
+  ::ng-deep .mat-fab{
+      width: 30px!important;
+      height: 30px!important;
+  }
+  ::ng-deep .mat-icon{
+    padding-bottom: 7px;
+    height: 29px!important;
+    width: 29px!important;
+    font-size: 20px!important;
+  }
+  ::ng-deep .mat-button-wrapper {
+    padding: 1px!important;
+   
+  }
+  
+  ::ng-deep td.mat-cell{
+      padding:2px;
+  }
+  .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+  .zoom:hover {
+    transform: scale(5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+  .mat-column-imageUrl {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 8% !important;
+    width: 250px !important;
+  
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  .color-icon{
+    color:rgb(182, 104, 255) ;
+  }
+  ::ng-deep .mat-fab.mat-accent{
+    background-color: #9c15c2!important;
+}
+.c{
+  background-color:#f37908!important;
+}
+.a{
+  background-color:#ea2929f3!important;
+}
+.p{
+  background-color:#e2a219f3!important;
+}
+.d{
+  background-color:#66c519f3!important;
+}
+::ng-deep .ok {
+  background: rgb(30, 241, 22)!important;
+  color:white;
+
+}
+::ng-deep .mat-simple-snackbar-action {
+  color:white!important;
+}
+::ng-deep video{
+  height:50%!important;
+  width:50%!important;
+  box-shadow: 6px 6px 6px 6px rgb(153 153 153 / 14%), 2px 4px 2px -2px rgb(153 153 153 / 20%), 2px 2px 6px 0 rgb(153 153 153 / 12%);
+  border-radius: 5px !important;
+  border: 1px solid;
+  border-color: #8ae7c3;
+}
+::ng-deep .error{
+  background: rgb(241, 60, 15)!important;
+  color:white;
+}
+::ng-deep .success{
+  background: rgb(88, 241, 27)!important;
+  color:white;
+}

@@ -1,0 +1,89 @@
+<div class="col-md-8">
+  <div class="card">
+    <div class="card-header card-header-danger">
+      <h4 class="card-title">Modifier le produit</h4>
+      <p class="card-category">Modifier votre produit</p>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="modifyForm">
+        <div class="row">
+          <div class="col-md-4">
+            <mat-form-field class="example-full-width">
+              <input formControlName="idproduit" matInput placeholder="id_produit" type="text"
+                [(ngModel)]="product.idproduit">
+
+            </mat-form-field>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <mat-form-field class="example-full-width">
+              <input formControlName="codeproduit" matInput placeholder="Code_Produit" type="text"
+                [(ngModel)]="product.codeproduit">
+              <mat-error *ngIf="modifyForm.get('codeproduit').invalid && modifyForm.get('codeproduit').touched">
+                <span *ngIf="modifyForm.get('codeproduit').modifyForm.required">This field is required</span>
+                <span *ngIf="modifyForm.get('codeproduit').modifyForm.min">This field is max 5</span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <mat-form-field class="example-full-width">
+              <input formControlName="libelleproduit" matInput placeholder="Libelle" type="text"
+                [(ngModel)]="product.libelleproduit">
+            </mat-form-field>
+            <mat-error *ngIf="modifyForm.get('libelleproduit').invalid && modifyForm.get('libelleproduit').touched">
+              <span *ngIf="modifyForm.get('libelleproduit').errors.required">This field is required</span>
+              <span *ngIf="modifyForm.get('libelleproduit').errors.minlength">This field is max 5</span>
+            </mat-error>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <mat-form-field class="example-full-width">
+              <input formControlName="prixunitaire" matInput placeholder="Prix_unitaire" type="number"
+                [(ngModel)]="product.prixunitaire">
+            </mat-form-field>
+            <mat-error *ngIf="modifyForm.get('prixunitaire').invalid && modifyForm.get('prixunitaire').touched">
+              <span *ngIf="modifyForm.get('prixunitaire').errors.required">This field is required</span>
+              <span *ngIf="modifyForm.get('prixunitaire').errors.min">This field is max 5</span>
+            </mat-error>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div style="margin-top: 5px;">
+
+
+
+            <div style="display:flex">
+              <label for="file-upload" class="custom-file-upload x">
+
+                Upload Image
+                <span class="material-icons" style=" margin-left:5px; size:50px">cloud_upload</span>
+              </label>
+            </div>
+            <input (change)="onImageChange($event)" required formControlName="image" id="file-upload" type="file" />
+            <div class="col-md-4">
+              <mat-error *ngIf="modifyForm.get('image').invalid && modifyForm.get('image').touched ">
+                <span *ngIf="modifyForm.get('image').errors.required">Image is not insered</span>
+              </mat-error>
+            </div>
+
+
+          </div>
+        </div>
+        <div class="preview" *ngIf="imgFile">
+          <img [src]="imgFile" id="imgFile"
+            style="width:250px; height:250px ;margin-top : 5px;border-radius: 3px ; border-style: groove;;border-radius: 3px; ">
+        </div>
+
+
+        <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="modify()" style="margin-top:10px;">Modify</button>
+        <div class="clearfix"></div>
+      </form>
+    </div>
+  </div>
+</div>
