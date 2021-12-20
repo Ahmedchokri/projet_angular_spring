@@ -23,10 +23,11 @@
                
              </div>
              </div>
+             
              <div class="row">
               <div class="col-md-5">
                 <label for="name">Date Facture</label>
-                <input type="date" id="name" name="name" formControlName="dateFacture" class="form-control">
+                <input type="date" id="name" name="name" required formControlName="dateFacture" class="form-control">
             </div>
           </div>
           <div class="row">
@@ -81,7 +82,7 @@
                       <i class="fa fa-trash"></i> 
                   </button>
                  
-                   <button (click)="addProduct()" class="btn btn-sm btn-info"  >
+                   <button type="button" (click)="addProduct()" class="btn btn-sm btn-info"  >
                       <i class="fa fa-plus"></i> 
                   </button> 
                   </td>

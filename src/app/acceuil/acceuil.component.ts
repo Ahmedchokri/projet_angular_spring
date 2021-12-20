@@ -5,6 +5,7 @@ import { FournisseurService } from 'app/fournisseur.service';
 import { Client } from 'app/modals/client';
 import { produit } from 'app/modals/product';
 import { ProductService } from 'app/product.service';
+import { StockserviceService } from 'app/stockservice.service';
 import * as Chart from 'chart.js';
 import * as Chartist from 'chartist';
 import { EMPTY } from 'rxjs';
@@ -21,6 +22,7 @@ export class AcceuilComponent implements OnInit {
   bar: any;
   doughnut: any;
   clientfidele:Client;
+  totalstock:number;
   data1 = [];
   listclientfidele : String ="";
   list = [];
@@ -37,7 +39,7 @@ export class AcceuilComponent implements OnInit {
   totalrevenue: number;
   totalfournisseur: number;
 
-  constructor(private ec: ProductService, private cl: ClientService, private ft: FactureService, private fr: FournisseurService) { }
+  constructor(private ec: ProductService, private cl: ClientService, private ft: FactureService, private fr: FournisseurService,private st: StockserviceService) { }
 
 
   startAnimationForLineChart(chart) {
@@ -98,6 +100,9 @@ export class AcceuilComponent implements OnInit {
     seq2 = 0;
   };
   ngOnInit() {
+    this.st.gettotalstock().subscribe(res => {
+      this.totalstock=res;
+    })
  this.cl.getclientfidele().subscribe(res=>{
    console.log(res);
    for(let i of res){

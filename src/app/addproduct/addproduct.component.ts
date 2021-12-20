@@ -40,8 +40,8 @@ message:string;
     })
    this.r.Retrieveallrayon().subscribe(res=>{this.rayon=res});
     this.addform=new FormGroup({
-      codeproduit : new FormControl(this.product.codeproduit,Validators.compose([Validators.required, Validators.minLength(8)])),
-      libelleproduit: new FormControl(this.product.libelleproduit,Validators.minLength(5)), 
+      codeproduit : new FormControl(this.product.codeproduit,Validators.compose([Validators.required, Validators.minLength(4)])),
+      libelleproduit: new FormControl(this.product.libelleproduit,Validators.minLength(4)), 
      prixunitaire : new FormControl(this.product.prixunitaire,Validators.compose([Validators.required,Validators.min(100)])),
      image: new FormControl(this.product.image,Validators.required),
       });

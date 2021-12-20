@@ -6,7 +6,7 @@
         <div class="card">
           <div class="card-header card-header-danger">
             <h4 class="card-title">Ajouter Produit</h4>
-            <p class="card-category">saisir votre nouveau produit</p>
+            <p class="card-category">saisir un nouveau produit</p>
           </div>
           <div class="card-body">
             <form [formGroup]="addform">
@@ -17,7 +17,7 @@
                       [(ngModel)]="product.codeproduit">
                     <mat-error *ngIf="addform.get('codeproduit').invalid && addform.get('codeproduit').touched">
                       <span *ngIf="addform.get('codeproduit').errors.required">This field is required</span>
-                      <span *ngIf="addform.get('codeproduit').errors.min">This field is max 5</span>
+                      <span *ngIf="addform.get('codeproduit').errors.min">This field is min 4</span>
                     </mat-error>
                   </mat-form-field>
                 </div>
@@ -31,7 +31,7 @@
                   </mat-form-field>
                   <mat-error *ngIf="addform.get('libelleproduit').invalid && addform.get('libelleproduit').touched">
                     <span *ngIf="addform.get('libelleproduit').errors.required">This field is required</span>
-                    <span *ngIf="addform.get('libelleproduit').errors.minlength">This field is max 5</span>
+                    <span *ngIf="addform.get('libelleproduit').errors.minlength">This field is min 4</span>
                   </mat-error>
                 </div>
               </div>

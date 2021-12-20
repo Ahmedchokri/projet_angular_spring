@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { UserProfileComponent } from '../../user-profile/user-profile.component';
+
 
 
 
@@ -18,7 +18,6 @@ import { ListClientComponent } from 'app/list-client/list-client.component';
 import { AddClientComponent } from 'app/add-client/add-client.component';
 import { UpdateClientComponent } from 'app/update-client/update-client.component';
 import { DetailclientComponent } from 'app/detailclient/detailclient.component';
-import { LoginComponent } from 'app/login/login.component';
 import { AddrayonComponent } from 'app/addrayon/addrayon.component';
 import { UpdaterayonComponent } from 'app/updaterayon/updaterayon.component';
 import { AddStock1Component } from 'app/add-stock1/add-stock1.component';
@@ -26,50 +25,8 @@ import { FullCalendarComponent } from 'app/full-calendar/full-calendar.component
 
 
 export const AdminLayoutRoutes: Routes = [
-    // {
-    //   path: '',
-    //   children: [ {
-    //     path: 'dashboard',
-    //     component: DashboardComponent
-    // }]}, {
-    // path: '',
-    // children: [ {
-    //   path: 'userprofile',
-    //   component: UserProfileComponent
-    // }]
-    // }, {
-    //   path: '',
-    //   children: [ {
-    //     path: 'icons',
-    //     component: IconsComponent
-    //     }]
-    // }, {
-    //     path: '',
-    //     children: [ {
-    //         path: 'notifications',
-    //         component: NotificationsComponent
-    //     }]
-    // }, {
-    //     path: '',
-    //     children: [ {
-    //         path: 'maps',
-    //         component: MapsComponent
-    //     }]
-    // }, {
-    //     path: '',
-    //     children: [ {
-    //         path: 'typography',
-    //         component: TypographyComponent
-    //     }]
-    // }, {
-    //     path: '',
-    //     children: [ {
-    //         path: 'upgrade',
-    //         component: UpgradeComponent
-    //     }]
-    // }
+  
     { path: 'dashboard',      component: AcceuilComponent },
-    { path: 'user',   component: UserProfileComponent },
     { path: 'produit',     component: ListproductComponent,children:[
         {path:'modifier/:idproduit',component: EditComponent},
     ]},
@@ -83,19 +40,62 @@ export const AdminLayoutRoutes: Routes = [
         {path:"updateclient/:id",component:UpdateClientComponent},
         {path:"detailclient/:id",component:DetailclientComponent},
     ]},
-
      {path: 'facture', component: ListfactureComponent,children :[{path:'addfacture', component:FactureComponent},{path:'fullcalendar',component:FullCalendarComponent}]},
      {path:"clients",component:ListClientComponent},
-    
-   
      {path:"addfacture",component:FactureComponent},
-    
      {path:'addfournisseur',component:AddfournisseurComponent},
      {path:"rayon" , component: RayonComponent ,children:[
         {path:"addrayon", component:AddrayonComponent},
          {path:"updaterayon/:idrayon" , component:UpdaterayonComponent}
       ]}, 
       {path:'AddStock1',component:AddStock1Component},
-
+      {
+        path: 'produit',
+        component: ListproductComponent,
+        children: [{
+          path: '',
+          loadChildren: () => import('app/admin-product/admin-product.module').then(m => m.AdminProductModule)
+        }]
+      },
+      {
+        path: 'stock',
+        component: StockComponent,
+        children: [{
+          path: '',
+          loadChildren: () => import('app/admin-stock/admin-stock.module').then(m => m.AdminStockModule)
+        }]
+      },
+      {
+        path: 'fournisseur',
+        component: FournisseurComponent,
+        children: [{
+          path: '',
+          loadChildren: () => import('app/admin-fournisseur/admin-fournisseur.module').then(m => m.AdminFournisseurModule)
+        }]
+      },
+      {
+        path: 'client',
+        component: ClientComponent,
+        children: [{
+          path: '',
+          loadChildren: () => import('app/admin-client/admin-client.module').then(m => m.AdminClientModule)
+        }]
+      },
+      {
+        path: 'rayon',
+        component: RayonComponent,
+        children: [{
+          path: '',
+          loadChildren: () => import('app/admin-rayon/admin-rayon.module').then(m => m.AdminRayonModule)
+        }]
+      },
+      {
+        path: 'facture',
+        component: FactureComponent,
+        children: [{
+          path: '',
+          loadChildren: () => import('app/admin-facture/admin-facture.module').then(m => m.AdminFactureModule)
+        }]
+      },
 
 ];

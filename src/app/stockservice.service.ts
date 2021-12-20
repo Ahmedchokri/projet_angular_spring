@@ -32,6 +32,9 @@ export class StockserviceService {
   getalarmstock():Observable<String>{
     return this.http.get<String>('http://localhost:8233/SpringMVC/stock/getalarm');
   }
+  gettotalstock():Observable<number>{
+    return this.http.get<number>('http://localhost:8233/SpringMVC/stock/totalstock');
+  }
   RetrieveallStock():Observable<Stock[]>{
     const username='ahmed';
     const password='chokri';

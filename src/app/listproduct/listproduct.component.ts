@@ -21,6 +21,7 @@ export class ListproductComponent implements OnInit {
   qrData:string;
   showqr:boolean=false;
   public createdcode:string=null;
+  test:string;
 change:boolean=false;
 change1:boolean=false
 listproduits:produit[]=[];
@@ -79,13 +80,12 @@ showqr1(){
         }
     }
 });
-
 this.qrScannerComponent.capturedQr.subscribe(result => {
 let j:boolean = false;
  let i=0;
  let produitshow :produit;
 while((i<this.listproduits.length)&&(j==false)){
-  this.createdcode='BEGIN QRCODE: NAME:'+this.listproduits[i].codeproduit+': TECH ADDA DATE: 2020-07-18';
+  this.createdcode='BEGIN QRCODE:NAME:'+this.listproduits[i].codeproduit+':TECH ADDA DATE:2020-07-18';
   if(result===this.createdcode){
     j= true;
     console.log(this.listproduits[i]); 
@@ -133,7 +133,7 @@ while((i<this.listproduits.length)&&(j==false)){
 });
 }
   ngOnInit(): void { 
-
+ 
   this.ec.allproducts().subscribe(
     
     res =>{
